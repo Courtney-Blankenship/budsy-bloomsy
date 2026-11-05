@@ -5,6 +5,7 @@ Website for Kristina's floral business: flower walls, event florals, flower lett
 - `index.html`: home page
 - `request/`: flower request (intake) form, set up for Netlify Forms
 - `palette/`: brand colors and type
+- `thanks/`: page shown after the request form is sent
 - `styles.css`: shared styles
 - `media/`: photos
 
