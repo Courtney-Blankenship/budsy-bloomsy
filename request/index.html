@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Request Flowers · Budsy Bloomsy Floral Co.</title>
+<meta name="description" content="Tell Budsy Bloomsy Floral Co. about your event or order. Kristina replies with a design and a quote.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shrikhand&family=DM+Serif+Display:ital@0;1&family=Figtree:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="../styles.css">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="wordmark" href="../">Budsy Bloomsy <span class="co">Floral Co.</span></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="../#make">Flowers</a></li>
+        <li><a href="../#about">About</a></li>
+        <li><a href="../#how">How it works</a></li>
+        <li><a class="pill" href="./" aria-current="page">Request flowers</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="phero">
+    <span class="label">Request flowers</span>
+    <h1>Let's plan your <em>flowers.</em></h1>
+    <p>Answer a few questions about your date and ideas. Kristina will reply within two business days with a design idea and a quote.</p>
+  </div>
+
+  <div class="intake">
+    <aside class="side">
+      <div class="card">
+        <span class="label">What happens next</span>
+        <ol>
+          <li>Kristina reviews your request.</li>
+          <li>You get ideas and a quote by email.</li>
+          <li>A deposit holds your date.</li>
+        </ol>
+      </div>
+      <div class="card" style="background: var(--butter)">
+        <span class="label">Booking ahead</span>
+        <p>Flower walls and events: 4–6 weeks. Arrangements: 2–3 days.</p>
+      </div>
+      <div>
+        <span class="label">Prefer email?</span>
+        <div class="mail"><code id="email">hello@budsybloomsy.com</code><button class="copybtn" id="copyBtn" type="button">Copy</button></div>
+      </div>
+    </aside>
+
+    <div>
+      <form class="req" id="req" name="flower-request" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="flower-request">
+        <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+        <fieldset class="step" style="--c: var(--poppy)">
+          <legend><b>1</b>About you</legend>
+          <div class="row2">
+            <label class="f"><span>Name</span><input id="f-name" name="name" autocomplete="name" required></label>
+            <label class="f"><span>Email</span><input id="f-email" name="email" type="email" autocomplete="email" required></label>
+          </div>
+          <div class="row2">
+            <label class="f"><span>Phone <span class="opt">(optional)</span></span><input id="f-phone" name="phone" type="tel" autocomplete="tel"></label>
+            <label class="f"><span>How did you find us?</span>
+              <select id="f-heard" name="heard">
+                <option value="">Choose one</option>
+                <option>Facebook</option><option>Instagram</option><option>A friend</option><option>Saw her work at an event</option><option>Other</option>
+              </select>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="step" style="--c: var(--peony)">
+          <legend><b>2</b>Your occasion</legend>
+          <div class="row2">
+            <label class="f"><span>I'm planning</span>
+              <select id="f-occasion" name="occasion" required>
+                <option value="">Choose one</option>
+                <option>Wedding</option><option>Birthday</option><option>Bridal or baby shower</option><option>Graduation</option><option>Brand or business event</option><option>Church or community event</option><option>Gift or just because</option><option>Sympathy</option><option>Other</option>
+              </select>
+            </label>
+            <label class="f"><span>Date</span><input id="f-date" name="date" type="date"></label>
+          </div>
+          <div class="row2">
+            <label class="f"><span>Venue or city</span><input id="f-venue" name="venue" placeholder="Venue name or delivery address"></label>
+            <label class="f"><span>Guest count <span class="opt">(events)</span></span><input id="f-guests" name="guests" type="number" min="1" inputmode="numeric"></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="step" style="--c: var(--marigold)">
+          <legend><b>3</b>Your flowers</legend>
+          <fieldset class="f">
+            <legend>What would you like? <span class="opt">Pick any.</span></legend>
+            <div class="chips" id="needs">
+              <label><input type="checkbox" name="needs" value="Flower wall"><span>Flower wall</span></label>
+              <label><input type="checkbox" name="needs" value="Event florals"><span>Centerpieces &amp; event florals</span></label>
+              <label><input type="checkbox" name="needs" value="Bouquets"><span>Bouquets</span></label>
+              <label><input type="checkbox" name="needs" value="Flower letters"><span>Flower letters &amp; signage</span></label>
+              <label><input type="checkbox" name="needs" value="Arch or install"><span>Arch or installation</span></label>
+              <label><input type="checkbox" name="needs" value="Arrangement"><span>Arrangement or gift</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="f">
+            <legend>Color story</legend>
+            <div class="chips">
+              <label><input type="radio" name="colors" value="Hot and bright"><span><i style="background: linear-gradient(90deg, var(--poppy), var(--marigold), var(--peony))"></i>Hot &amp; bright</span></label>
+              <label><input type="radio" name="colors" value="Blush and soft"><span><i style="background: linear-gradient(90deg, #fbd3dc, #f6e6dd)"></i>Blush &amp; soft</span></label>
+              <label><input type="radio" name="colors" value="All white and green"><span><i style="background: linear-gradient(90deg, #fffdf8, #b9cfa8)"></i>White &amp; green</span></label>
+              <label><input type="radio" name="colors" value="Moody and deep"><span><i style="background: linear-gradient(90deg, var(--fg), var(--magenta))"></i>Moody &amp; deep</span></label>
+              <label><input type="radio" name="colors" value="Kristina's choice"><span>Kristina's choice</span></label>
+            </div>
+          </fieldset>
+          <div class="row2">
+            <label class="f"><span>Budget</span>
+              <select id="f-budget" name="budget">
+                <option value="">Choose a range</option>
+                <option>Under $150</option><option>$150 – $500</option><option>$500 – $1,500</option><option>$1,500 – $3,000</option><option>$3,000+</option><option>Not sure yet</option>
+              </select>
+            </label>
+            <label class="f"><span>Setup needed?</span>
+              <select id="f-setup" name="setup">
+                <option value="">Choose one</option>
+                <option>Delivery and setup</option><option>Delivery only</option><option>I'll pick up</option>
+              </select>
+            </label>
+          </div>
+          <label class="f"><span>Tell us your ideas</span><textarea id="f-ideas" name="ideas" placeholder="Theme, favorite flowers, words or names for flower letters, links to inspiration photos"></textarea></label>
+        </fieldset>
+
+        <div class="send">
+          <button class="btn bloom" type="submit">Send my request</button>
+          <small>Kristina replies within two business days.</small>
+        </div>
+        <p class="err" id="err" role="alert"></p>
+      </form>
+
+      <div class="done" id="done" hidden>
+        <span class="label">Request ready</span>
+        <h3 id="done-title">Thank you!</h3>
+        <p id="done-note"></p>
+        <dl id="summary"></dl>
+        <div><button class="btn" type="button" id="again">Edit request</button></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="wordmark" href="../">Budsy Bloomsy <span class="co">Floral Co.</span></a>
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="../#make">Flowers</a></li>
+        <li><a href="./">Request flowers</a></li>
+        <li><a href="../palette/">Brand palette</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Pre-tick a service when arriving from a card on the home page (?need=Flower+wall)
+  var need = new URLSearchParams(location.search).get('need');
+  if (need) document.querySelectorAll('#needs input').forEach(function (c) { if (c.value === need) c.checked = true; });
+
+  var copyBtn = document.getElementById('copyBtn');
+  copyBtn.addEventListener('click', function () {
+    var el = document.getElementById('email');
+    function sel() { var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); copyBtn.textContent = 'Selected'; }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(el.textContent.trim()).then(function () { copyBtn.textContent = 'Copied'; }, sel); else sel();
+    setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1800);
+  });
+
+  var form = document.getElementById('req'), err = document.getElementById('err'), done = document.getElementById('done');
+  // On the real site (Netlify), the form posts normally. Inside a Claude preview it can't send, so show a summary instead.
+  var isPreview = !/netlify\.app$|budsybloomsy\.com$/.test(location.hostname);
+
+  form.addEventListener('submit', function (e) {
+    err.textContent = '';
+    var name = form.elements.name, email = form.elements.email, occ = form.elements.occasion;
+    if (!name.value.trim()) { e.preventDefault(); err.textContent = 'Add your name so Kristina knows who to reply to.'; name.focus(); return; }
+    if (!email.value.trim() || !email.checkValidity()) { e.preventDefault(); err.textContent = 'Add an email address like name@example.com.'; email.focus(); return; }
+    if (!occ.value) { e.preventDefault(); err.textContent = 'Choose what you’re planning.'; occ.focus(); return; }
+    if (!isPreview) return;
+    e.preventDefault();
+
+    var needs = Array.prototype.map.call(form.querySelectorAll('input[name="needs"]:checked'), function (c) { return c.value; }).join(', ');
+    var colors = (form.querySelector('input[name="colors"]:checked') || {}).value || '';
+    var rows = [
+      ['Name', name.value], ['Email', email.value], ['Phone', form.elements.phone.value],
+      ['Occasion', occ.value], ['Date', form.elements.date.value], ['Venue', form.elements.venue.value],
+      ['Guests', form.elements.guests.value], ['Flowers', needs], ['Colors', colors],
+      ['Budget', form.elements.budget.value], ['Setup', form.elements.setup.value], ['Ideas', form.elements.ideas.value]
+    ];
+    var dl = document.getElementById('summary'); dl.textContent = '';
+    rows.forEach(function (r) { if (!String(r[1]).trim()) return; var dt = document.createElement('dt'), dd = document.createElement('dd'); dt.textContent = r[0]; dd.textContent = r[1]; dl.appendChild(dt); dl.appendChild(dd); });
+    document.getElementById('done-title').textContent = 'Thank you, ' + name.value.trim().split(' ')[0] + '!';
+    document.getElementById('done-note').textContent = 'This is a preview, so your request was not sent. Once the site is live, this form sends straight to Kristina. Here is what she would receive:';
+    form.hidden = true; done.hidden = false; done.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  document.getElementById('again').addEventListener('click', function () { done.hidden = true; form.hidden = false; });
+})();
+</script>
+</body>
+</html>
